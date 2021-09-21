@@ -1,5 +1,6 @@
-import ExpenseItem from "./components/ExpenseItem";
-
+import Expenses from "./components/Expenses/Expenses";
+import ExpenseForm from "./components/NewExpense/ExpenseForm";
+import NewExpense from "./components/NewExpense/NewExpense";
 function App() {
   const expenses = [
     { title: "Car Insurance", amount: 300, date: new Date(2021, 2, 28) },
@@ -9,15 +10,8 @@ function App() {
 
   return (
     <div>
-      {expenses.map((item) => {
-        return (
-          <ExpenseItem
-            title={item.title}
-            amount={item.amount}
-            date={item.date}
-          />
-        );
-      })}
+      <NewExpense />
+      <Expenses expenses={expenses} />
     </div>
   );
 }
