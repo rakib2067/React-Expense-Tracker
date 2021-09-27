@@ -14,7 +14,7 @@ const DUMMY_DATA = [
     id: Math.random().toString(),
     title: "Health Insurance",
     amount: 250,
-    date: new Date(2011, 3, 15),
+    date: new Date(2021, 3, 15),
   },
   {
     id: Math.random().toString(),

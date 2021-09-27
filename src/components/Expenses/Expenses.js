@@ -8,23 +8,23 @@ export default function Expenses(props) {
   const currentSelected = (item) => {
     setSelected(item);
   };
+  const filteredExpenses = props.expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === selected;
+  });
+
   return (
     <Card className="expenses">
       <ExpensesFilter current={selected} currentSelected={currentSelected} />
-      {props.expenses
-        .filter((item) => {
-          return item.date.getFullYear() == selected;
-        })
-        .map((item) => {
-          return (
-            <ExpenseItem
-              key={item.id}
-              title={item.title}
-              amount={item.amount}
-              date={item.date}
-            />
-          );
-        })}
+      {filteredExpenses.map((item) => {
+        return (
+          <ExpenseItem
+            key={item.id}
+            title={item.title}
+            amount={item.amount}
+            date={item.date}
+          />
+        );
+      })}
     </Card>
   );
 }
