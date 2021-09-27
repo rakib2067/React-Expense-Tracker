@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 export default function Expenses(props) {
   const [selected, setSelected] = useState("2021");
   const currentSelected = (item) => {
@@ -15,16 +16,7 @@ export default function Expenses(props) {
   return (
     <Card className="expenses">
       <ExpensesFilter current={selected} currentSelected={currentSelected} />
-      {filteredExpenses.map((item) => {
-        return (
-          <ExpenseItem
-            key={item.id}
-            title={item.title}
-            amount={item.amount}
-            date={item.date}
-          />
-        );
-      })}
+      <ExpensesList filteredList={filteredExpenses} />
     </Card>
   );
 }
