@@ -18,13 +18,14 @@ export default function ExpenseForm(props) {
     event.preventDefault();
     const enteredItems = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onExpenseSubmit(enteredItems);
     setEnteredAmount("");
     setEnteredTitle("");
     setEnteredDate("");
+    props.onClear();
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -59,7 +60,10 @@ export default function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={props.onClear}>
+          Clear
+        </button>
+        <button type="submit">Add Expense</button>
       </div>
     </form>
   );
